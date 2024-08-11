@@ -8,13 +8,13 @@ El objetivo de la práctica es realizar una pequeña aplicación, desarrollada e
 ## Definición de tipos de datos
 Este algoritmo se basa en el uso de una matriz donde las celdas contienen conjuntos de símbolos No terminales de la gramática. Estos símbolos son a su vez reconocidos por los símbolos No Terminales presentes en las celdas de niveles superiores. Si en la celda ubicada en el último nivel se encuentra el símbolo inicial de la gramática, quiere decir que a partir de ese símbolo se puede derivar toda la cadena de entrada y, por tanto, dicha cadena pertenece al lenguaje.
 
-<img src="images/tabla_cyk_ejemplo.PNG" width="600">
+<img src="reports/figures/tabla_cyk_ejemplo.PNG" width="600">
     
 Como se puede ver en este ejemplo de aplicación del algoritmo CYK, es necesario tener
 almacenada la gramática y la cadena de entrada. Ambas serán introducidas al programa a
 través de un fichero. El formato del fichero de gramática será el siguiente:
 
-<img src="images/gramatica_ejemplo.PNG" width="500">
+<img src="reports/figures/gramatica_ejemplo.PNG" width="500">
 
 Los símbolos No Terminales serán aquellos caracteres en mayúsculas, y los Terminales vendrán dados en minúsculas y entre los caracteres ‘<’ y ’>’.
 
@@ -22,7 +22,7 @@ Cada línea será una regla de la gramática, y el fichero puede contener coment
 
 El formato del fichero donde venga definida la cadena de entrada es más simple:
 
-<img src="images/cadena_entrada.PNG" width="500">
+<img src="reports/figures/cadena_entrada.PNG" width="500">
 
 Cada línea del fichero corresponde a un símbolo Terminal de la gramática. Todas las líneas del fichero forman la cadena de entrada.
 
@@ -77,12 +77,12 @@ Como se mencionó antes, el algoritmo CYK trabaja por niveles, donde en cada niv
 
 Para la gramática:
 
-<img src="images/gramatica_ejemplo2.PNG" width="500">
+<img src="reports/figures/gramatica_ejemplo2.PNG" width="500">
 
 Con la cadena de entrada: ( id ( id ( num ) ) ( id ) )
 Se obtiene la siguiente tabla:
 
-<img src="images/tabla_ejercicio.PNG" width="500">
+<img src="reports/figures/tabla_ejercicio.PNG" width="500">
 
 Se pueden diferenciar dos tipos de diagonales:
 - Primera diagonal: en ella aparecen los símbolos No Terminales de la gramática que tienen una regla con la que pueden producir el símbolo Terminal de la entrada que se encuentra al inicio de la columna.
@@ -94,7 +94,7 @@ Como se verá a continuación, la forma de obtener estas diagonales es diferente
 ### Creación de la primera diagonal
 Para la primera diagonal, dado que tiene el mismo número de elementos que símbolos Terminales hay en la cadena de entrada, se creará usando únicamente dicha información, además del uso de la Gramática para saber qué reglas se aplican.
 
-<img src="images/tabla_primera_diagonal.PNG" width="500">
+<img src="reports/figures/tabla_primera_diagonal.PNG" width="500">
 
 Para esto, se han implementado dos funciones:
 
@@ -110,7 +110,7 @@ La segunda función realizará llamadas a la función anterior, profundizando de
 ### Creación de las diagonales intermedias
 Una vez creada la primera diagonal, se procede a la creación de todas las diagonales internas. El motivo por el que es necesario crear la primera diagonal antes es que estas diagonales intermedias requieren conocer los símbolos No Terminales presentes en las diagonales inferiores, puesto que los símbolos No Terminales que van a obtenerse serán aquellos que reconozcan los ya presentes.
 
-<img src="images/tabla_diagonal_intermedia.PNG" width="500">
+<img src="reports/figures/tabla_diagonal_intermedia.PNG" width="500">
 
 A partir de los datos obtenidos de las diagonales anteriores, se comienza a crear la siguiente diagonal. Recursivamente, se profundiza en la diagonal nueva, hasta llegar al extremo inferior. Desde ahí, se construye la nueva diagonal, añadiendo en cada llamada recursiva una nueva celda a la diagonal, por tanto, la diagonal crece de abajo hacia arriba.
 
@@ -189,7 +189,7 @@ Finalmente, obtenida la tabla mediante la creación de sus diagonales, es moment
 
 Si el símbolo inicial se encuentra ahí, significa que desde ese símbolo se puede derivar toda la cadena de entrada y, por tanto, dicha cadena pertenece al lenguaje.
 
-<img src="images/tabla_final.PNG" width="500">
+<img src="reports/figures/tabla_final.PNG" width="500">
 
 El símbolo inicial de la gramática será aquel que se encuentre en la primera regla de la gramática, en este caso, será el símbolo S, por la regla: S → num.
 
@@ -246,8 +246,8 @@ Las visualizaciones de las tablas obtenidas han sido recortadas.
 
 Gramática: Ficheros usados: GramáticaExamen.cfg y EntradaExamen.txt
 
-<img src="https://github.com/alexbm98/CYK-MAC_2020-2021/blob/main/Documentaci%C3%B3n/images/EjercicioExamenMAC2021.png" width="500">
-<img src="images/resultados_ejercicio_examen.PNG" width="500">
+<img src="https://github.com/alexbm98/CYK-MAC_2020-2021/blob/main/Documentaci%C3%B3n/reports/figures/EjercicioExamenMAC2021.png" width="500">
+<img src="reports/figures/resultados_ejercicio_examen.PNG" width="500">
 
 En el enunciado hay un error. La gramática rparen, es con R, no con L. Este error fue aclarado el día del examen
 
@@ -255,36 +255,36 @@ En el enunciado hay un error. La gramática rparen, es con R, no con L. Este err
 
 Gramática: Ficheros usados: Gramática.cfg y Entrada.txt
 
-<img src="images/gramatica_ejercicio_1.PNG" width="500">
-<img src="images/resultados_ejercicio_1.PNG" width="500">
+<img src="reports/figures/gramatica_ejercicio_1.PNG" width="500">
+<img src="reports/figures/resultados_ejercicio_1.PNG" width="500">
 
 ### Ejemplo 2
 
 Gramática: Ficheros usados: G2.cfg y E2.txt
 
-<img src="images/gramatica_ejercicio_2.PNG" width="500">
-<img src="images/resultados_ejercicio_2.PNG" width="500">
+<img src="reports/figures/gramatica_ejercicio_2.PNG" width="500">
+<img src="reports/figures/resultados_ejercicio_2.PNG" width="500">
 
 ### Ejemplo 3
 
 Gramática: Ficheros usados: G4.cfg y E4.txt
 
-<img src="images/gramatica_ejercicio_3.PNG" width="500">
-<img src="images/resultados_ejercicio_3.PNG" width="500">
+<img src="reports/figures/gramatica_ejercicio_3.PNG" width="500">
+<img src="reports/figures/resultados_ejercicio_3.PNG" width="500">
 
 ### Ejemplo 4
 
 Gramática: Ficheros usados: G5.cfg y E5.txt
 
-<img src="images/gramatica_ejercicio_4.PNG" width="500">
-<img src="images/resultados_ejercicio_4.PNG" width="500">
+<img src="reports/figures/gramatica_ejercicio_4.PNG" width="500">
+<img src="reports/figures/resultados_ejercicio_4.PNG" width="500">
 
 ### Ejemplo 5
 
 Gramática: Ficheros usados: G2.cfg y E22.txt
 
-<img src="images/gramatica_ejercicio_5.PNG" width="500">
-<img src="images/resultados_ejercicio_5.PNG" width="500">
+<img src="reports/figures/gramatica_ejercicio_5.PNG" width="500">
+<img src="reports/figures/resultados_ejercicio_5.PNG" width="500">
 
 Junto al código fuente se incluyen las gramáticas y cadenas de entrada utilizadas en los ejemplos, junto a otras gramáticas.
 
